@@ -107,8 +107,7 @@ class LayerUploadForm(forms.Form):
         "prj_file"]
 
     # Adding style file based on the backend
-    if check_ogc_backend(geoserver.BACKEND_PACKAGE):
-        spatial_files.append('sld_file')
+    spatial_files.append('sld_file')
     if check_ogc_backend(qgis_server.BACKEND_PACKAGE):
         spatial_files.append('qml_file')
 
@@ -244,8 +243,7 @@ class NewLayerUploadForm(LayerUploadForm):
         "xml_file"
     ]
     # Adding style file based on the backend
-    if check_ogc_backend(geoserver.BACKEND_PACKAGE):
-        spatial_files.append('sld_file')
+    spatial_files.append('sld_file')
     if check_ogc_backend(qgis_server.BACKEND_PACKAGE):
         spatial_files.append('qml_file')
 

@@ -90,8 +90,8 @@ class LayerUploadForm(forms.Form):
     shx_file = forms.FileField(required=False)
     prj_file = forms.FileField(required=False)
     xml_file = forms.FileField(required=False)
-    if check_ogc_backend(geoserver.BACKEND_PACKAGE):
-        sld_file = forms.FileField(required=False)
+    # We are only using GeoServer
+    sld_file = forms.FileField(required=False)
     if check_ogc_backend(qgis_server.BACKEND_PACKAGE):
         qml_file = forms.FileField(required=False)
 
@@ -151,10 +151,9 @@ class LayerUploadForm(forms.Form):
                 prj_file = cleaned["prj_file"].name
             if cleaned["xml_file"] is not None:
                 xml_file = cleaned["xml_file"].name
-            # SLD style only available in GeoServer backend
-            if check_ogc_backend(geoserver.BACKEND_PACKAGE):
-                if cleaned["sld_file"] is not None:
-                    sld_file = cleaned["sld_file"].name
+            # We are only using GeoServer
+            if cleaned["sld_file"] is not None:
+                sld_file = cleaned["sld_file"].name
 
         if not cleaned["metadata_upload_form"] and not cleaned["style_upload_form"] and base_ext.lower() not in (
                 ".shp", ".tif", ".tiff", ".geotif", ".geotiff", ".asc"):
@@ -226,8 +225,7 @@ class LayerUploadForm(forms.Form):
 
 
 class NewLayerUploadForm(LayerUploadForm):
-    if check_ogc_backend(geoserver.BACKEND_PACKAGE):
-        sld_file = forms.FileField(required=False)
+    sld_file = forms.FileField(required=False)
     if check_ogc_backend(qgis_server.BACKEND_PACKAGE):
         qml_file = forms.FileField(required=False)
     xml_file = forms.FileField(required=False)

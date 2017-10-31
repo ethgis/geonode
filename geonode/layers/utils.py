@@ -150,7 +150,7 @@ def get_files(filename):
         files[extension.lower().replace('.', '')] = filename
 
     # Only for GeoServer
-    if check_ogc_backend(geoserver.BACKEND_PACKAGE):
+    if True:
         matches = glob.glob(glob_name + ".[sS][lL][dD]")
         if len(matches) == 1:
             files['sld'] = matches[0]

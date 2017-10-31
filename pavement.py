@@ -134,7 +134,7 @@ def _install_data_dir():
             xml = f.read()
             m = re.search('proxyBaseUrl>([^<]+)', xml)
             xml = xml[:m.start(1)] + \
-                "http://localhost:8080/geoserver" + xml[m.end(1):]
+                "http://35.164.213.187:8080/geoserver" + xml[m.end(1):]
             with open(config, 'w') as f:
                 f.write(xml)
     except Exception as e:
@@ -147,19 +147,19 @@ def _install_data_dir():
             xml = f.read()
             m = re.search('accessTokenUri>([^<]+)', xml)
             xml = xml[:m.start(1)] + \
-                "http://localhost:8000/o/token/" + xml[m.end(1):]
+                "http://35.164.213.187:8000/o/token/" + xml[m.end(1):]
             m = re.search('userAuthorizationUri>([^<]+)', xml)
             xml = xml[:m.start(
-                1)] + "http://localhost:8000/o/authorize/" + xml[m.end(1):]
+                1)] + "http://35.164.213.187:8000/o/authorize/" + xml[m.end(1):]
             m = re.search('redirectUri>([^<]+)', xml)
             xml = xml[:m.start(
-                1)] + "http://localhost:8080/geoserver/index.html" + xml[m.end(1):]
+                1)] + "http://35.164.213.187:8080/geoserver/index.html" + xml[m.end(1):]
             m = re.search('checkTokenEndpointUrl>([^<]+)', xml)
             xml = xml[:m.start(
-                1)] + "http://localhost:8000/api/o/v4/tokeninfo/" + xml[m.end(1):]
+                1)] + "http://35.164.213.187:8000/api/o/v4/tokeninfo/" + xml[m.end(1):]
             m = re.search('logoutUri>([^<]+)', xml)
             xml = xml[:m.start(
-                1)] + "http://localhost:8000/account/logout/" + xml[m.end(1):]
+                1)] + "http://35.164.213.187:8000/account/logout/" + xml[m.end(1):]
             with open(config, 'w') as f:
                 f.write(xml)
     except Exception as e:
@@ -171,7 +171,7 @@ def _install_data_dir():
         with open(config) as f:
             xml = f.read()
             m = re.search('baseUrl>([^<]+)', xml)
-            xml = xml[:m.start(1)] + "http://localhost:8000" + xml[m.end(1):]
+            xml = xml[:m.start(1)] + "http://35.164.213.187:8000" + xml[m.end(1):]
             with open(config, 'w') as f:
                 f.write(xml)
     except Exception as e:
@@ -430,8 +430,8 @@ def start_geoserver(options):
     GEOSERVER_BASE_URL = OGC_SERVER['default']['LOCATION']
     url = GEOSERVER_BASE_URL
 
-    if urlparse(GEOSERVER_BASE_URL).hostname != 'localhost':
-        print "Warning: OGC_SERVER['default']['LOCATION'] hostname is not equal to 'localhost'"
+    if urlparse(GEOSERVER_BASE_URL).hostname != '35.164.213.187':
+        print "Warning: OGC_SERVER['default']['LOCATION'] hostname is not equal to '35.164.213.187'"
 
     if not GEOSERVER_BASE_URL.endswith('/'):
         print "Error: OGC_SERVER['default']['LOCATION'] does not end with a '/'"

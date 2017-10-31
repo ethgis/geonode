@@ -104,10 +104,9 @@ class LayerUploadForm(forms.Form):
         "base_file",
         "dbf_file",
         "shx_file",
-        "prj_file"]
+        "prj_file",
+        "sld_file",]
 
-    # Adding style file based on the backend
-    spatial_files.append('sld_file')
     if check_ogc_backend(qgis_server.BACKEND_PACKAGE):
         spatial_files.append('qml_file')
 
@@ -153,6 +152,7 @@ class LayerUploadForm(forms.Form):
             # We are only using GeoServer
             if cleaned["sld_file"] is not None:
                 sld_file = cleaned["sld_file"].name
+
 
         if not cleaned["metadata_upload_form"] and not cleaned["style_upload_form"] and base_ext.lower() not in (
                 ".shp", ".tif", ".tiff", ".geotif", ".geotiff", ".asc"):
@@ -240,10 +240,10 @@ class NewLayerUploadForm(LayerUploadForm):
         "dbf_file",
         "shx_file",
         "prj_file",
-        "xml_file"
+        "xml_file",
+        "sld_file",
     ]
     # Adding style file based on the backend
-    spatial_files.append('sld_file')
     if check_ogc_backend(qgis_server.BACKEND_PACKAGE):
         spatial_files.append('qml_file')
 

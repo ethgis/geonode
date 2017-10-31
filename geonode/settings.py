@@ -591,7 +591,7 @@ NOSE_ARGS = [
 #
 # GeoNode specific settings
 #
-SITEURL = os.getenv('SITEURL', "http://localhost:8000/")
+SITEURL = os.getenv('SITEURL', "http://35.164.213.187:8000/")
 
 USE_QUEUE = strtobool(os.getenv('USE_QUEUE', 'False'))
 
@@ -612,11 +612,11 @@ MISSING_THUMBNAIL = os.getenv(
 CACHE_TIME = int(os.getenv('CACHE_TIME', '0'))
 
 GEOSERVER_LOCATION = os.getenv(
-    'GEOSERVER_LOCATION', 'http://localhost:8080/geoserver/'
+    'GEOSERVER_LOCATION', 'http://35.164.213.187:8080/geoserver/'
 )
 
 GEOSERVER_PUBLIC_LOCATION = os.getenv(
-    'GEOSERVER_PUBLIC_LOCATION', 'http://localhost:8080/geoserver/'
+    'GEOSERVER_PUBLIC_LOCATION', 'http://35.164.213.187:8080/geoserver/'
 )
 
 OGC_SERVER_DEFAULT_USER = os.getenv(
